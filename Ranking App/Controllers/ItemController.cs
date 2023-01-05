@@ -31,5 +31,10 @@ namespace Ranking_App.Controllers
             new ItemModel{Id = 20, Title = "The Final Countdown", ImageId=20, Ranking=0,ItemType=2 }
 
         };
+        public ItemModel[] Get(int itemType)
+        {
+            ItemModel[] items = Items.Where(i => i.ItemType == itemType).ToArray();
+            return items;
+        }
     }
 }
