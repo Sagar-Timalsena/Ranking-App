@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from React;
+﻿import { useEffect, useState } from 'react';
 
 const RankItem = () => {
 
@@ -6,19 +6,28 @@ const RankItem = () => {
     useEffect(() => {
         fetch('item/${dataType}')
             .then((results) => {
-                return returns.json();
+                return.json();
             })
             .then(data => {
                 setItem(data);
             })
-    },[])
+    }, [])
 
 
     return (
         <main>
-            (item.length>0)? items.map(item)=> <h3>
-                {items.title}            </h3>:<div>Loading......</div>
+            <div className="item-not-ranked">
+                {
+                    (item.length > 0) ? items.map((item)=>
+                <div className="unranked-cell">
+                    <img id={'item-${item.id}'} src={MovieImageArr.find(o => o.id === item.imageId)?.image} />
+
+                    </div>
+               ) :<div>Loading......</div>
+                }
+            </div>
+         
         </main>
-        )
+    )
 }
-export default RankItem
+export default RankItem;
